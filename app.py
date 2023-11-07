@@ -1,3 +1,16 @@
+import streamlit as st
+from streamlit_chat import message
+from streamlit_extras.colored_header import colored_header
+from streamlit_extras.add_vertical_space import add_vertical_space
+from langchain import PromptTemplate, HuggingFaceHub, LLMChain
+# from dotenv import load_dotenv
+
+import pandas as pd
+from model import PredictReview
+
+import streamlit as st
+
+# Change the Streamlit page background color
 st.markdown(
     """
     <style>
@@ -8,16 +21,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
-import streamlit as st
-from streamlit_chat import message
-from streamlit_extras.colored_header import colored_header
-from streamlit_extras.add_vertical_space import add_vertical_space
-from langchain import PromptTemplate, HuggingFaceHub, LLMChain
-# from dotenv import load_dotenv
-
-import pandas as pd
-from model import PredictReview
 
 #Get Sentiment
 def get_sentiment(text):
