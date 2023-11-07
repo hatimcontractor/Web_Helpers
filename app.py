@@ -10,17 +10,28 @@ from model import PredictReview
 
 import streamlit as st
 
-# Change the Streamlit page background color
-st.markdown(
-    """
+# Define a CSS style for a specific section with a light blue background
+section_style = """
     <style>
-    body {
+    .section-with-background {
         background-color: #f0f8ff; /* Light blue background color */
+        padding: 10px; /* Add some padding for better appearance */
     }
     </style>
-    """,
-    unsafe_allow_html=True
-)
+"""
+
+# Use the defined style for a specific section
+st.markdown(section_style, unsafe_allow_html=True)
+
+# Add your content within the section with the background
+st.markdown("<div class='section-with-background'>", unsafe_allow_html=True)
+
+# Add content specific to this section
+st.title("This section has a light blue background")
+st.write("You can add content here.")
+
+# Close the section
+st.markdown("</div>", unsafe_allow_html=True)
 
 #Get Sentiment
 def get_sentiment(text):
