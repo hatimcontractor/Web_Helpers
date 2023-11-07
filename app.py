@@ -31,7 +31,7 @@ st.set_page_config(page_title="Amazon Product App")
 
 # Set the background color, font, and other styles using custom CSS
 st.markdown(
-    """
+    
     <style>
     body {
         background-color: #F2F2F2; /* Change to your preferred background color */
@@ -59,7 +59,7 @@ st.markdown(
     }
     /* Add more CSS rules as needed */
     </style>
-    """,
+    ,
     unsafe_allow_html=True
 )
 
