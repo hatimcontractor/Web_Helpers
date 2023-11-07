@@ -29,7 +29,6 @@ load_dotenv()
 st.set_page_config(page_title="Amazon Product App")
 
 
-# Set the background color, font, and other styles using custom CSS
 st.markdown(
     """
     <style>
@@ -38,7 +37,11 @@ st.markdown(
         font-family: Arial, sans-serif; /* Change to your preferred font */
         color: #333333; /* Change the text color */
     }
+    .stContent {
+        margin-right: 0; /* Move the content to the right */
+    }
     .stSidebar {
+        float: top; /* Float the sidebar to the right */
         background-color: #333333; /* Sidebar background color */
         color: #FFFFFF; /* Sidebar text color */
     }
@@ -59,6 +62,8 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+st.set_page_config(page_title="Amazon Product App")
+
 # Sidebar contents
 with st.sidebar:
     st.title('Amazon Product Related Queries App ')
@@ -68,7 +73,7 @@ with st.sidebar:
     ''')
     menu = ['Amazon Review Sentiment Analysis','Product Queries BOT']
     choice  = st.sidebar.selectbox("Select an option", menu)
-    add_vertical_space(15)
+    add_vertical_space(10)
     st.write('Made by [Hatim Contractor](https://github.com/hatimcontractor)')
 
 st.header("Your Amazon Assistant")
