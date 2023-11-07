@@ -68,7 +68,7 @@ with st.sidebar:
     ''')
     menu = ['Amazon Review Sentiment Analysis','Product Queries BOT']
     choice  = st.sidebar.selectbox("Select an option", menu)
-    add_vertical_space(10)
+    add_vertical_space(50)
     st.write('Made by [Hatim Contractor](https://github.com/hatimcontractor)')
 
 st.header("Your Amazon Assistant")
