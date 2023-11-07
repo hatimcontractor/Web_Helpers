@@ -26,7 +26,7 @@ def get_sentiment(text):
 
 # load the Environment Variables. 
 load_dotenv()
-# st.set_page_config(page_title="Amazon Product App")
+st.set_page_config(page_title="Amazon Product App")
 
 
 # Set the background color, font, and other styles using custom CSS
@@ -63,7 +63,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.set_page_config(page_title="Amazon Product App")
+# st.set_page_config(page_title="Amazon Product App")
 
 # Sidebar contents
 with st.sidebar:
