@@ -29,6 +29,7 @@ load_dotenv()
 st.set_page_config(page_title="Amazon Product App")
 
 
+# Set the background color, font, and other styles using custom CSS
 st.markdown(
     """
     <style>
@@ -41,7 +42,7 @@ st.markdown(
         margin-right: 0; /* Move the content to the right */
     }
     .stSidebar {
-        float: top; /* Float the sidebar to the right */
+        float: right; /* Float the sidebar to the right */
         background-color: #333333; /* Sidebar background color */
         color: #FFFFFF; /* Sidebar text color */
     }
@@ -62,7 +63,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.set_page_config(page_title="Amazon Product App")
+# st.set_page_config(page_title="Amazon Product App")
 
 # Sidebar contents
 with st.sidebar:
