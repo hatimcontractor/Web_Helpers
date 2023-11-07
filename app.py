@@ -26,12 +26,12 @@ def get_sentiment(text):
 
 # load the Environment Variables. 
 load_dotenv()
-st.set_page_config(page_title="Amazon Product App")
+# st.set_page_config(page_title="Amazon Product App")
 
 
 # Set the background color, font, and other styles using custom CSS
 st.markdown(
-    
+    """
     <style>
     body {
         background-color: #F2F2F2; /* Change to your preferred background color */
@@ -59,18 +59,18 @@ st.markdown(
     }
     /* Add more CSS rules as needed */
     </style>
-    ,
+    """,
     unsafe_allow_html=True
 )
 
-# st.set_page_config(page_title="Amazon Product App")
+st.set_page_config(page_title="Amazon Product App")
 
 # Sidebar contents
 with st.sidebar:
     st.title('Amazon Product Related Queries App ')
     st.markdown('''
     ## About
-    This is an Review Sentiment Analysis and a chatbot for Amazon Product related queries:
+    This is a Review Sentiment Analysis and a chatbot for Amazon Product-related queries:
     ''')
     menu = ['Amazon Review Sentiment Analysis','Product Queries BOT']
     choice  = st.sidebar.selectbox("Select an option", menu)
