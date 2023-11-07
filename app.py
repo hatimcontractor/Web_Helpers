@@ -4,9 +4,6 @@ from streamlit_extras.colored_header import colored_header
 from streamlit_extras.add_vertical_space import add_vertical_space
 from langchain import PromptTemplate, HuggingFaceHub, LLMChain
 from dotenv import load_dotenv
-import os
-
-
 
 import pandas as pd
 from model import PredictReview
@@ -27,7 +24,7 @@ def get_sentiment(text):
 
     return answer
 
-# load the Environment Variables.
+# load the Environment Variables. 
 load_dotenv()
 st.set_page_config(page_title="Amazon Product App")
 
@@ -35,24 +32,24 @@ st.set_page_config(page_title="Amazon Product App")
 
 # Sidebar contents
 with st.sidebar:
-    st.title('Amazon Product Queries')
+    st.title('Amazon Product Related Queries App ')
     st.markdown('''
     ## About
-    This app is an Review Sentiment Analysis and a LLM-powered chatbot for Amazon Product related queries:
+    This is an Review Sentiment Analysis and a chatbot for Amazon Product related queries:
     ''')
     menu = ['Amazon Review Sentiment Analysis','Product Queries BOT']
     choice  = st.sidebar.selectbox("Select an option", menu)
-    add_vertical_space(50)
+    add_vertical_space(10)
     st.write('Made by [Hatim Contractor](https://github.com/hatimcontractor)')
 
-st.header("Your Amazon Assistant ")
+st.header("Your Amazon Assistant")
 st.divider()
 
 def main():
 
-    if choice == 'Sentiment Analysis':
+    if choice == 'Amazon Review Sentiment Analysis':
 
-        st.subheader("Sentiment Analysis")
+        st.subheader("Amazon Review Sentiment Analysis")
         with st.form(key='my_form'):
             raw_text = st.text_area("Enter the amazon review here:")
             submit_button = st.form_submit_button(label='Submit')
@@ -61,11 +58,11 @@ def main():
             st.info("Sentiment:")
             answer = get_sentiment(raw_text)
             st.write(answer)
-       
+        
         # st.divider()
 
-    elif choice == 'BOT':
-        st.subheader("BOT")    
+    elif choice == 'Product Queries BOT':
+        st.subheader("Product Queries BOT")    
         # Generate empty lists for generated and user.
         ## Assistant Response
         if 'generated' not in st.session_state:
@@ -94,7 +91,7 @@ def main():
 
             template = """Your are amazon product related query bot so answer only product related questions, if any other questions asked then don't answer: <|prompter|>{question}<|endoftext|>
             <|assistant|>"""
-           
+            
             prompt = PromptTemplate(template=template, input_variables=["question"])
 
             llm=HuggingFaceHub(repo_id="OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5", model_kwargs={"max_new_tokens":1200})
@@ -120,7 +117,7 @@ def main():
                 response = generate_response(user_input, llm_chain)
                 st.session_state.user.append(user_input)
                 st.session_state.generated.append(response)
-               
+                
             if st.session_state['generated']:
                 for i in range(len(st.session_state['generated'])):
                     message(st.session_state['user'][i], is_user=True, key=str(i) + '_user')
