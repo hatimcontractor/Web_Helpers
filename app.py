@@ -3,12 +3,13 @@ from streamlit_chat import message
 from streamlit_extras.colored_header import colored_header
 from streamlit_extras.add_vertical_space import add_vertical_space
 from langchain import PromptTemplate, HuggingFaceHub, LLMChain
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
+import os
+
+
 
 import pandas as pd
 from model import PredictReview
-
-import streamlit as st
 
 #Get Sentiment
 def get_sentiment(text):
@@ -26,34 +27,25 @@ def get_sentiment(text):
 
     return answer
 
-# load the Environment Variables. 
-# load_dotenv()
+# load the Environment Variables.
+load_dotenv()
 st.set_page_config(page_title="Amazon Product App")
 
-st.markdown(
-    """
-    <style>
-    body {
-        background-color: blue; /* Change to the desired background color */
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+
 
 # Sidebar contents
 with st.sidebar:
-    st.title('Amazon Product Related Queries App ')
+    st.title('Amazon Product Queries')
     st.markdown('''
     ## About
-    This is an Review Sentiment Analysis and a chatbot for Amazon Product related queries:
+    This app is an Review Sentiment Analysis and a LLM-powered chatbot for Amazon Product related queries:
     ''')
     menu = ['Amazon Review Sentiment Analysis','Product Queries BOT']
     choice  = st.sidebar.selectbox("Select an option", menu)
-    add_vertical_space(10)
+    add_vertical_space(50)
     st.write('Made by [Hatim Contractor](https://github.com/hatimcontractor)')
 
-st.header("Your Amazon Assistant")
+st.header("Your Amazon Assistant ")
 st.divider()
 
 def main():
@@ -69,11 +61,11 @@ def main():
             st.info("Sentiment:")
             answer = get_sentiment(raw_text)
             st.write(answer)
-        
+       
         # st.divider()
 
     elif choice == 'BOT':
-        st.subheader("Product BOT")    
+        st.subheader("BOT")    
         # Generate empty lists for generated and user.
         ## Assistant Response
         if 'generated' not in st.session_state:
@@ -102,7 +94,7 @@ def main():
 
             template = """Your are amazon product related query bot so answer only product related questions, if any other questions asked then don't answer: <|prompter|>{question}<|endoftext|>
             <|assistant|>"""
-            
+           
             prompt = PromptTemplate(template=template, input_variables=["question"])
 
             llm=HuggingFaceHub(repo_id="OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5", model_kwargs={"max_new_tokens":1200})
@@ -128,7 +120,7 @@ def main():
                 response = generate_response(user_input, llm_chain)
                 st.session_state.user.append(user_input)
                 st.session_state.generated.append(response)
-                
+               
             if st.session_state['generated']:
                 for i in range(len(st.session_state['generated'])):
                     message(st.session_state['user'][i], is_user=True, key=str(i) + '_user')
