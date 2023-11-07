@@ -29,6 +29,35 @@ load_dotenv()
 st.set_page_config(page_title="Amazon Product App")
 
 
+# Set the background color, font, and other styles using custom CSS
+st.markdown(
+    """
+    <style>
+    body {
+        background-color: #F2F2F2; /* Change to your preferred background color */
+        font-family: Arial, sans-serif; /* Change to your preferred font */
+        color: #333333; /* Change the text color */
+    }
+    .stSidebar {
+        background-color: #333333; /* Sidebar background color */
+        color: #FFFFFF; /* Sidebar text color */
+    }
+    .stSelectbox {
+        background-color: #FFFFFF; /* Dropdown background color */
+        color: #333333; /* Dropdown text color */
+    }
+    .stForm {
+        padding: 20px; /* Form padding */
+    }
+    .stButton {
+        background-color: #FF5733; /* Button background color */
+        color: #FFFFFF; /* Button text color */
+    }
+    /* Add more CSS rules as needed */
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 # Sidebar contents
 with st.sidebar:
