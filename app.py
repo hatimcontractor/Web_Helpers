@@ -10,13 +10,6 @@ from model import PredictReview
 
 import streamlit as st
 
-st.write(
-    '<style>'
-    'body { background-color: #f0f8ff; }'  # Light blue background color
-    '</style>',
-    unsafe_allow_html=True
-)
-
 #Get Sentiment
 def get_sentiment(text):
     #importing dataset
@@ -37,7 +30,16 @@ def get_sentiment(text):
 # load_dotenv()
 st.set_page_config(page_title="Amazon Product App")
 
-
+st.markdown(
+    """
+    <style>
+    body {
+        background-color: #FF5733; /* Change to the desired background color */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 # Sidebar contents
 with st.sidebar:
